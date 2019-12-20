@@ -1,0 +1,95 @@
+
+<!doctype html>
+<head>
+	<title>He's Gone</title>
+	<script src="./music.js"></script>
+	<style>
+
+		@import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR:200,300,400,500,600,700,900&display=swap&subset=korean');
+
+		h2 {color:white; text-shadow: 10; line-height: 2.2; font-size: 16pt; font-family: 'Noto Serif KR', serif; font-weight: 500; letter-spacing: -0.02em}
+		h3 {color:white; text-shadow: 10; line-height: 3.0; font-size: 14pt; font-family: 'Noto Serif KR', serif; font-weight: 400; letter-spacing: -0.02em}
+
+
+		html,body,div,img{margin:0; padding:0;}
+		
+		.circle{ width:200px; height:200px; background:;
+			position: absolute; left:calc(50% - 100px); top:200px;
+			animation: Moving 8s linear infinite;
+					}
+		@keyframes Moving{
+			0%{ }
+			100%{ transform: rotate(-360deg)}
+		}
+		.circle img{width:100%; height:auto;}
+
+		.container{display: flex; flex-grow: 1; justify-content: space-around; margin-top: 80px;
+		-webkit-flex-direction:column;
+　		flex-direction:column;
+		position: absolute;
+		margin-left: 100px;}
+		
+	</style>
+</head>
+<body>
+	<img src="2.gif" style="width: 100%; position: absolute;">
+	
+
+	<button id="play1" style="position: absolute; right: 200px; margin-top: 100px; z-index: 999; border-radius: 30px">Replay</button>
+
+	
+	
+	<div class="container">
+		<h2 style="size: 10pt">그는 간다. <br>
+		그가 가고 싶어서 가는 것도 아니요. <br>
+		내가 보내고 싶어서 보내는 것도 아니지만 그는 간다.
+		</h2>
+
+		<h2 style="size: 10pt">그의 붉은 입술, 흰니, 가는 눈썹이 어여쁜 줄만 알았더니, <br>
+		구름같은 뒷머리, 실버들같은 허리, <br>
+		구슬같은 발꿈치가 보다 아름답습니다.</h2>
+
+		<h2 style="size: 10pt">걸음이 걸음보다 멀어지더니 보이려다 말고 말려다 보인다. <br>    
+		사람이 멀어질수록 마음은 가까와지고, <br>
+		마음이 가까와질수록 사람은 멀어진다. <br>
+		보이는 듯한 것이 그의 흔드는 수건인가 하였더니, <br>
+		갈매기보다도 작은 조각 구름이 난다.</h2>
+
+		<h3>한유천 - 그를 보내며</h3>
+
+
+
+	</div>
+
+
+
+	<div class="circle" id="circle">
+		<img src="65.gif" id="cImg">
+	</div>
+
+
+
+	<script>
+		var newSound = new music("fpt.mp3",16);
+	
+		(function loop(){ 
+ 
+			var vol = newSound.getGain() / 10; 
+			circle.style.width = vol + "px";
+			circle.style.height = vol + "px";
+			circle.style.borderRadius = vol/2 + "px";
+			circle.style.left = "calc(50% - " + (vol/2) + "px)";
+			circle.style.top = 300 - (vol/2) + "px";
+
+			window.requestAnimationFrame(loop);	
+		})();
+
+
+		
+		play1.onclick = function(){
+			cImg.setAttribute("src","65.gif");
+			newSound.change("fpt.mp3");
+		};	
+
+	</script>
+</body>
